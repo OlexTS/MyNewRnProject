@@ -22,7 +22,7 @@ export const RegistrationScreen = () => {
             behavior={Platform.OS === "ios" ? "padding" : "height"}
           >
             <View style={styles.wrapper}>
-              <Text>Реєстрація</Text>
+              <Text style={styles.title}>Реєстрація</Text>
               <TextInput placeholder="Логін" style={styles.input} />
               <TextInput
                 placeholder="Адреса електронної пошти"
@@ -45,7 +45,14 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 549,
   },
-  title: {},
+  title: {
+    // fontFamily: var(--font-family),
+// fontWeight: 500,
+fontSize:  30,
+// letterSpacing:  0.01em,
+textAlign:  'center',
+color: 212121,
+  },
   input: {
     height: 50,
     padding: 16,
@@ -54,6 +61,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#e8e8e8",
     marginHorizontal: 16,
+    marginBottom: 16
   },
   bgImage: {
     flex: 1,
