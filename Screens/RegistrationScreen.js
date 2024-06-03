@@ -9,7 +9,7 @@ import {
   TouchableWithoutFeedback,
   View,
   ImageBackground,
-  TouchableOpacity,
+  TouchableOpacity,ScrollView
 } from "react-native";
 
 const initialState = { login: "", email: "", password: "" };
@@ -21,27 +21,28 @@ export const RegistrationScreen = () => {
   const onHideKeyboard = () => {
     setIsShowKeyboard(false);
     Keyboard.dismiss();
-    console.log(state);
-    setState(initialState)
+    // console.log(state);
+    setState(initialState);
   };
   return (
     <TouchableWithoutFeedback onPress={onHideKeyboard}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={{ flex: 1 }}>
         <ImageBackground
-          resizeMode="cover"
-          source={require("../assets/images/Photo BGbg.png")}
+          source={require("../assets/images/BG.png")}
           style={styles.bgImage}
+          resizeMode="cover"
         >
-          <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
+          <View
+            style={{
+              ...styles.wrapper,
+              paddingBottom: isShowKeyboard ? 32 : 80,
+            }}
           >
-            <View
-              style={{
-                ...styles.wrapper,
-                paddingBottom: isShowKeyboard ? 32 : 80,
-              }}
+            <Text style={styles.title}>Реєстрація</Text>
+            <KeyboardAvoidingView
+              behavior={Platform.OS === "ios" ? "padding" : "height"}
             >
-              <Text style={styles.title}>Реєстрація</Text>
               <View style={styles.form}>
                 <View
                   style={{
@@ -86,6 +87,7 @@ export const RegistrationScreen = () => {
                     }
                   />
                 </View>
+
                 <TouchableOpacity style={styles.btn} onPress={onHideKeyboard}>
                   <Text style={styles.btnTxt}>Зареєструватися</Text>
                 </TouchableOpacity>
@@ -95,10 +97,10 @@ export const RegistrationScreen = () => {
                   </Text>
                 </TouchableOpacity>
               </View>
-            </View>
-          </KeyboardAvoidingView>
+            </KeyboardAvoidingView>
+          </View>
         </ImageBackground>
-      </View>
+      </View></ScrollView>
     </TouchableWithoutFeedback>
   );
 };
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 25,
     backgroundColor: "#fff",
     width: "100%",
-    height: 549,
+    // height: 549,
   },
   title: {
     // fontFamily: var(--font-family),
